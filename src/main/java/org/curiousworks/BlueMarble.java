@@ -10,7 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 
 public class BlueMarble {
-	
+
 	private String API_KEY = "7u1nv3v73ROS0u2F65J7w14pnGpjzwCv6cruBzes";
 	private String dateAsString;
 	private String quality = "natural";
@@ -22,11 +22,19 @@ public class BlueMarble {
 		blueMarble.setDate(LocalDate.now().minusDays(1).toString());
 		return blueMarble.getImage();
 	}
-	
+
 	public void setDate(String date) {
 		this.dateAsString = date;
 	}
-	
+
+	public String getDate() {
+		return this.dateAsString;
+	}
+
+	public String getQuality() {
+		return this.quality;
+	}
+
 	public InputStream getImage() {
 		try {
 			getMetaData();
@@ -56,6 +64,7 @@ public class BlueMarble {
 	}
 
 	public void setEnhanced(boolean b) {
-		this.quality = "enhanced";
+		this.quality = b ? "enhanced" : "natural";
+//			this.quality = "enhanced";
 	}
 }
